@@ -25,6 +25,9 @@ if ($result) {
     $totaal_bedrag = 0;
 }
 
+$sql = "SELECT naam, bedrag FROM donaties";
+$result_donaties = mysqli_query($connection, $sql);
+
 mysqli_close($connection);
 ?>
 
@@ -72,6 +75,27 @@ mysqli_close($connection);
         </div>
         <div>
             <H1>Dank voor al uw gulle donaties!</H1>
+        </div>
+
+        <div>
+            <table>
+                <tr>
+                    <th>Naam</th>
+                    <th>Bedrag</th>
+                </tr>
+                <?php if ($result_donaties): ?>
+                    <?php while ($row = mysqli_fetch_assoc($result_donaties)): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['naam']); ?></td>
+                            <td>€ <?php echo number_format((float)$row['bedrag'], 2); ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="2">Geen donaties gevonden.</td>
+                    </tr>
+                <?php endif; ?>
+            </table>
         </div>
 
     </main>
