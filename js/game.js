@@ -18,9 +18,9 @@ class Game extends Engine {
         this.start(ResourceLoader).then(() => this.startGame())
     }
     startGame() {
-        // this.add('Level', new level())
-        // this.add('Gameover', new gameover())
-        // this.add('Intro', new intro())
+        this.add('Level', new level())
+        this.add('Gameover', new gameover())
+        this.add('Intro', new intro())
     }
 }
 
