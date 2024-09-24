@@ -6,8 +6,6 @@ import { gameover } from './Gameover.js'
 import { intro } from './Intro.js'
 
 export class Waves extends Actor {
-    speed
-
     constructor() {
         super({ width: Resources.Test.width, height: Resources.Test.height })
 
@@ -16,5 +14,13 @@ export class Waves extends Actor {
         const sprite = Resources.Test.toSprite()
         this.graphics.use(sprite)
         this.pos = new Vector(200, 200)
+        this.on("pointerup", () => this.waveKill())
+        this.score = 0
     }
-}
+
+    waveKill(){
+        this.kill()
+        this.score++
+    }
+   
+    }
