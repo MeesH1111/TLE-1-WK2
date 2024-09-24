@@ -2,16 +2,60 @@ H1 {
     text-align: center;
 }
 
+
 .pagediv {
     display: flex;
+    height: 80vh;
+
+    border-bottom: 2px solid black;
 }
 
-form {
+.formdiv {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-around;
+    height: 60vh;
 }
 
-.pagediv {
-    height: 50vh;
+input {
+    margin-left: 20%;
+}
+
+.inputdiv {
+    display: flex;
+    align-items: center;
+}
+
+.inputdiv label {
+    width: 100px;
+}
+
+.inputdiv input {
+    flex-grow: 1;
+}
+
+p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.divide1 {
+    width: 40%;
+    border-right: 2px solid black;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.divide2 {
+    position: relative;
+    width: 40%;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center
+}
+
+img {
+    margin-top: -10%;
 }
