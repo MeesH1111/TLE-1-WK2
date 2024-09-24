@@ -1,0 +1,143 @@
+body {
+    Margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+}
+
+.picture {
+    height: 4vw;
+}
+
+/*nav*/
+nav {
+    padding: 2vw 20vw;
+    margin: 0;
+    background-color: #282828;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+nav a {
+    color: #5F7336;
+    font-weight: bold;
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.nav-text,
+.nav-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    flex: 1;
+}
+
+.nav a :hover {
+    color: #146EA6;
+}
+
+
+.header-home {
+    margin: 0;
+    padding: 4vw 4vw;
+    background-image: url(../img/background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: solid 2px #282828;
+}
+
+h1 {
+    color: #146EA6;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+/*main*/
+.main-home {
+    margin: 0;
+    padding: 5vw 15vw;
+    background-color: #ffffff;
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+}
+
+.pipes-text {
+    padding: 0vw 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #146EA6;
+    
+}
+
+img {
+    max-height: 30vw;
+}
+
+
+
+
+
+footer {
+    padding: 2vw 2vw;
+    margin: 0;
+    background-color: #282828;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    flex: 3;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+}
+
+footer p {
+    color: #5F7336;
+    font-size: 0.9rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: #5F7336;
+    margin: 1vw;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+footer a:hover {
+    color: #146EA6;
+}
