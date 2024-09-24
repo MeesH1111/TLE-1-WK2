@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -15,7 +16,7 @@
     <nav>
 
         <div class="nav-text">
-            <a href="./homepage.html">Donaties</a>
+            <a href="./doneren.php">Donaties</a>
         </div>
 
         <div class="nav-logo">
@@ -23,31 +24,71 @@
         </div>
 
         <div class="nav-text">
-            <a href="./statistiekenpage.php">Game</a>
+            <a href="./game.html">Game</a>
         </div>
     </nav>
 
     <header class="header-home">
+        <span class="arrow left" id="prev">←</span>
+        <span class="arrow right" id="next">→</span>
         <h1 id="headline"> Zuiver Buis </h1>
     </header>
+<script>
+    const imgBackgound = [
+        'img/background1.jpg',
+        'img/background2.jpg',
+        'img/background3.jpg',
+        'img/background4.jpg',
+        'img/background5.jpg',
+        'img/background6.jpg'
+    ]
+
+    let currentIndex = 0;
+    const header = document.querySelector('.header-home');
+
+
+    function changeBackground(index) {
+      header.style.backgroundImage = `url(${imgBackgound[index]})`;
+      console.log('Huidige afbeelding:', imgBackgound[index]);
+    }
+
+    changeBackground(currentIndex);
+    
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % imgBackgound.length;
+      changeBackground(currentIndex);
+    }, 5000);
+
+    document.getElementById('next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % imgBackgound.length;
+      changeBackground(currentIndex);
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + imgBackgound.length) % imgBackgound.length;
+      changeBackground(currentIndex);
+    });
+
+</script>
+
 
     <main class="main-home">
         <section id="main">
-            <img src="" alt="pipes">
+            <img src="img/zuiverbuis.jpg" alt="pipes">
             <div class="pipes-text">
                 <div>
-                    <p class="title">TITLE</p>
-                    <p>Wij werken samen aan een belangrijk project om een eiland te redden dat bedreigd wordt door de
+                    <p class="title">Help save Tuvalu</p>
+                    <p>Wij werken samen aan een belangrijk project om Tuvalu te redden dat bedreigd wordt door de
                         stijgende zeespiegel. Als groep hebben we besloten een innovatief systeem te ontwikkelen:
                         filterbuizen die zeewater opvangen, filteren, en direct omzetten in bruikbaar zoetwater voor de
                         bewoners. Deze oplossing kan helpen het eiland duurzaam van water te voorzien, wat essentieel is
                         nu het eiland steeds meer risico loopt door de klimaatverandering.
 
-                        Om dit systeem te installeren en het eiland te beschermen, hebben we donaties nodig. Met jullie
+                        Om dit systeem te installeren en Tuvalu te beschermen, hebben we donaties nodig. Met jullie
                         hulp kunnen we deze filterbuizen bouwen en een levenslijn bieden aan de gemeenschap die
                         dagelijks wordt geconfronteerd met de dreiging van overstromingen en waterschaarste.</p>
                 </div>
-                <p class="donation-link">donatie link?</p>
+                <a href="./doneren.php" class="main-link">Donate nu om Tuvalu te redden</a>
             </div>
         </section>
     </main>
@@ -71,6 +112,7 @@
             <a href="#">Algemene voorwaarden</a>
             <a href="#">Cookiebeleid</a>
         </div>
+
     </footer>
 
 </body>
