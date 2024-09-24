@@ -9,11 +9,11 @@ export class Waves extends Actor {
     speed
 
     constructor() {
-        super({ width: Resources.Watcher.width, height: Resources.Watcher.height })
+        super({ width: Resources.Test.width, height: Resources.Test.height })
 
     }
     onInitialize() {
-        const sprite = Resources.Watcher.toSprite()
+        const sprite = Resources.Test.toSprite()
         this.graphics.use(sprite)
     }
 }
