@@ -1,22 +1,31 @@
 <?php
-require 'db.php';
+require "../TLE-1-WK2/db.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $naam = $_POST['name'];
-    $bedrag = $_POST['donation'];
+    $naam = mysqli_real_escape_string($connection, $_POST['name']);
+    $bedrag = mysqli_real_escape_string($connection, $_POST['donation']);
 
-    $sql = "INSERT INTO donaties (naam, bedrag) VALUES (:naam, :bedrag)";
-    $stmt->execute(['naam' => $naam, 'bedrag' => $bedrag]);
+    $sql = "INSERT INTO donaties (naam, bedrag) VALUES ('$naam', '$bedrag')";
+
+    if (!mysqli_query($connection, $sql)) {
+        die("Fout bij het invoegen: " . mysqli_error($connection));
+    }
 
     header('Location: doneren.php');
     exit();
 }
 
-
 $sql = "SELECT SUM(bedrag) AS totaal_bedrag FROM donaties";
-$stmt = $pdo->query($sql);
-$row = $stmt->fetch();
-$totaal_bedrag = $row['totaal_bedrag'];
+$result = mysqli_query($connection, $sql);
+
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $totaal_bedrag = $row['totaal_bedrag'] ?? 0;
+} else {
+    $totaal_bedrag = 0;
+}
+
+mysqli_close($connection);
 ?>
 
 
@@ -37,7 +46,7 @@ $totaal_bedrag = $row['totaal_bedrag'];
             <div class=divide1>
                 <H1>Hier kunt u doneren aan Tuvalu</H1>
 
-                <form action="">
+                <form action="" method="POST">
                     <div class=formdiv>
                         <div class=inputdiv>
                             <label for="name">Uw naam</label>
@@ -45,7 +54,7 @@ $totaal_bedrag = $row['totaal_bedrag'];
                         </div>
                         <div class=inputdiv>
                             <label for="donation">Uw donatie</label>
-                            <input type="number" id="donation" name="donation" placeholder="€..." required min="0" step="0.01">
+                            <input type="number" id="donation" name="donation" placeholder="€..." required min="0" max="9999" step="0.01">
                         </div>
 
                         <button type="submit">Doneren</button>
