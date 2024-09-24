@@ -21,7 +21,7 @@ class Game extends Engine {
         this.add('Level', new level())
         this.add('Gameover', new gameover())
         this.add('Intro', new intro())
-
+        this.goToScene('Level',)
     }
 }
 
