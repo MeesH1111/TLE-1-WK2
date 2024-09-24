@@ -4,16 +4,26 @@ import { Resources, ResourceLoader } from './resources.js'
 import { level } from './Level.js'
 import { gameover } from './Gameover.js'
 import { intro } from './Intro.js'
+import { Waves } from "./wave.js"
 
 export class home extends Actor {
-    speed
-
-    constructor() {
-        super({ width: Resources.Watcher.width, height: Resources.dog.height })
-
+    constructor(x, y) {
+        super({ width: Resources.Test.width, height: Resources.Test.height })
+        this.pos = new Vector(x, y)
     }
     onInitialize() {
-        const sprite = Resources.Watcher.toSprite()
+        const sprite = Resources.Test.toSprite()
         this.graphics.use(sprite)
+        this.on('collisionstart', (event) => this.Gothit(event))
     }
+
+
+    Gothit(event) {
+        if (event.other instanceof Waves) {
+        }
+    }
+
+
+
+
 }
