@@ -1,9 +1,9 @@
-import '../css/style.css'
+//import '../css/style.css'
 import { Actor, Engine, Vector, DisplayMode, Label, Font, FontUnit } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
-import { level } from './level.js'
-import { gameover } from './gameover.js'
-import { intro } from './intro.js'
+// import { level } from './Level.js'
+// import { gameover } from './Gameover.js'
+// import { intro } from './Intro.js'
 
 
 class Game extends Engine {
@@ -18,10 +18,10 @@ class Game extends Engine {
         this.start(ResourceLoader).then(() => this.startGame())
     }
     startGame() {
-        this.add('Level', new level())
-        this.add('Gameover', new gameover())
-        this.add('Intro', new intro())
-        this.goToScene('Intro')
+        // this.add('Level', new level())
+        // this.add('Gameover', new gameover())
+        // this.add('Intro', new intro())
     }
 }
+
 new Game()

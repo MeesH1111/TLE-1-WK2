@@ -1,9 +1,9 @@
 import '../css/style.css'
 import { Actor, Engine, Vector, DisplayMode, Label, Font, FontUnit } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
-import { level } from './level.js'
-import { gameover } from './gameover.js'
-import { intro } from './intro.js'
+import { level } from './Level.js'
+import { gameover } from './Gameover.js'
+import { intro } from './Intro.js'
 
 export class Waves extends Actor {
     speed
