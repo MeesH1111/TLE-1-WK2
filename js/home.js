@@ -5,16 +5,15 @@ import { level } from './Level.js'
 import { gameover } from './Gameover.js'
 import { intro } from './Intro.js'
 
-export class Waves extends Actor {
+export class home extends Actor {
     speed
 
     constructor() {
-        super({ width: Resources.Test.width, height: Resources.Test.height })
+        super({ width: Resources.Watcher.width, height: Resources.dog.height })
 
     }
     onInitialize() {
-        const sprite = Resources.Test.toSprite()
+        const sprite = Resources.Watcher.toSprite()
         this.graphics.use(sprite)
-        this.pos = new Vector(200, 200)
     }
 }
