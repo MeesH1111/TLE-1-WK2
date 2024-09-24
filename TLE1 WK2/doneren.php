@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,21 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/doneren.css">
 </head>
 
 <body>
     <nav> </nav>
     <main>
-        <H1>Hier kunt u doneren aan Tuvalu</H1>
+        <div class=pagediv>
+            <div>
+                <H1>Hier kunt u doneren aan Tuvalu</H1>
 
-        <form action="">
+                <form action="">
+                    <div>
+                        <label for="name">Uw naam</label>
+                        <input type="text" id="name" name="name" placeholder="Naam" required>
+                    </div>
+                    <div>
+                        <label for="donation">Uw donatie</label>
+                        <input type="int" id="donation" name="donation" placeholder="€..." required>
+                    </div>
 
-            <label for="name">Uw naam</label>
-            <input type="text" id="name" name="name" placeholder="Naam" required>
+                    <button type="submit">Doneren</button>
+                </form>
+            </div>
 
-            <label for="donation">Uw donatie</label>
-            <input type="int" id="donation" name="donation" placeholder="€..." required>
-        </form>
+            <div>
+
+                <H1>Totaal gedoneerd bedrag</H1>
+
+            </div>
+        </div>
+        <div>
+            <H1>Dank voor al uw gulle donaties!</H1>
+        </div>
 
     </main>
 </body>

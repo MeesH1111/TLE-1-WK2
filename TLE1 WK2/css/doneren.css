@@ -1,0 +1,17 @@
+H1 {
+    text-align: center;
+}
+
+.pagediv {
+    display: flex;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.pagediv {
+    height: 50vh;
+}
