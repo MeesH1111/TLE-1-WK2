@@ -12,7 +12,7 @@ export class intro extends Scene {
     onInitialize() {
         this.score = 0
 
-        
+
         const backgroundStart = new Actor();
         backgroundStart.graphics.use(Resources.BackgroundStart.toSprite());
         backgroundStart.pos = new Vector(960, 540);
@@ -20,7 +20,7 @@ export class intro extends Scene {
 
         this.Label = new Label({
             text: 'Save Tuvalu',
-            pos: new Vector(575,200),
+            pos: new Vector(575, 200),
             font: new Font({
                 family: 'Impact',
                 size: 170,
@@ -31,7 +31,7 @@ export class intro extends Scene {
 
         this.Label = new Label({
             text: 'Red het eiland door de golven weg te houden',
-            pos: new Vector(480,450),
+            pos: new Vector(480, 450),
             font: new Font({
                 family: 'Arial',
                 size: 50,
@@ -42,7 +42,7 @@ export class intro extends Scene {
 
         this.Label = new Label({
             text: 'klik op de golven om ze weg te houden en behaal zo een hoog mogelijke score!',
-            pos: new Vector(75,510),
+            pos: new Vector(75, 510),
             font: new Font({
                 family: 'Arial',
                 size: 50,

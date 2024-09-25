@@ -4,8 +4,6 @@ import { Resources, ResourceLoader } from './resources.js';
 import { Waves } from "./wave.js";
 import { home } from "./home.js";
 
-
-
 export class level extends Scene {
     homes
     wavestate
@@ -17,6 +15,8 @@ export class level extends Scene {
     }
 
     onInitialize() {
+        this.kills = 0
+        this.previuskills = 0
         this.currentwaves = 0
         this.speed = 100
         this.homesx = [700, 400, 300, 600, 800]
@@ -37,8 +37,6 @@ export class level extends Scene {
     }
 
     Wavespeed(kills, previuskills) {
-
-
 
         if (this.currentwaves !== this.wavestate) {
             let toSpawn = 5 - this.currentwaves
