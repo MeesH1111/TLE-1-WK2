@@ -48,7 +48,7 @@ mysqli_close($connection);
     <nav>
 
         <div class="nav-text">
-            <a href="./info.html">Info</a>
+            <a class=navlink href="./info.html">Info</a>
         </div>
 
         <div class="nav-logo">
@@ -56,7 +56,7 @@ mysqli_close($connection);
         </div>
 
         <div class="nav-text">
-            <a href="./game.html">Game</a>
+            <a class=navlink href="./game.html">Game</a>
         </div>
     </nav>
 
