@@ -9,6 +9,6 @@ export class intro extends Scene {
         super();
     }
     onInitialize() {
-        //   this.Wave = new Wave()
+        //this.Wave = new Wave()
     }
 }
