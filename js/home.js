@@ -11,7 +11,8 @@ export class home extends Actor {
         super({ width: Resources.Test.width, height: Resources.Test.height })
         this.pos = new Vector(x, y)
     }
-    onInitialize() {
+    onInitialize(engine) {
+        this.game = engine
         const sprite = Resources.Test.toSprite()
         this.graphics.use(sprite)
         this.on('collisionstart', (event) => this.Gothit(event))
@@ -20,10 +21,13 @@ export class home extends Actor {
 
     Gothit(event) {
         if (event.other instanceof Waves) {
+            // home wordt gesloopt
+            this.game.hp = this.game.hp - 1
+        }
+
+        if (this.game.hp <= 0) {
+            this.scene.game.goToScene("Gameover")
         }
     }
-
-
-
 
 }

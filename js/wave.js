@@ -10,17 +10,21 @@ export class Waves extends Actor {
         super({ width: Resources.Test.width, height: Resources.Test.height })
 
     }
-    onInitialize() {
+    onInitialize(Target, wavespeeds, speed, engine) {
+        this.game = engine
         const sprite = Resources.Test.toSprite()
         this.graphics.use(sprite)
         this.pos = new Vector(200, 200)
         this.on("pointerup", () => this.waveKill())
         this.score = 0
+        console.log('hoi')
+        this.actions.moveTo(Target, wavespeeds, speed)
     }
 
-    waveKill(){
+    waveKill() {
         this.kill()
         this.score++
+        this.game.kills++
     }
-   
-    }
+
+}
