@@ -22,6 +22,11 @@ export class level extends Scene {
         this.homesx = [700, 400, 300, 600, 800]
         this.homesy = [500, 700, 400, 500, 800]
 
+        const backgroundStart = new Actor();
+        backgroundStart.graphics.use(Resources.BackgroundStart.toSprite());
+        backgroundStart.pos = new Vector(960, 540);
+        this.add(backgroundStart);
+
         for (let i = 0; i < this.homesx.length; i++) {
             console.log(this.homesx[i])
             this.home = new home(this.homesx[i], this.homesy[i])
@@ -29,19 +34,6 @@ export class level extends Scene {
             this.add(this.home)
             this.wave = new Waves(this.homesx[1], this.homesy[1], speed)
         }
-
-
-
-        // this.timerLabel = new Label(); 
-        // this.timerLabel.font = new Font({
-        //     family: 'Arial',
-        //     size: 24,
-        //     unit: FontUnit.PIXEL
-        // });
-        // this.timerLabel.color = Color.White;
-        // this.timerLabel.text = 'Time: 0 minutes 0 seconds'; 
-        // this.timerLabel.x = 1000;
-        // this.timerLabel.y = 1000;
     }
 
     Wavespeed(kills, previuskills) {

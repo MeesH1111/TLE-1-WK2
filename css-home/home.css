@@ -23,7 +23,7 @@ nav {
 }
 
 nav a {
-    color: #5F7336;
+    color: #146EA6;
     font-weight: bold;
     font-size: 1.25rem;
     display: flex;
@@ -40,8 +40,9 @@ nav a {
     flex: 1;
 }
 
-.nav a :hover {
-    color: #146EA6;
+.navlink:hover {
+    color: #5F7336;
+    transition: all 0.5s;
 }
 
 
@@ -69,21 +70,25 @@ nav a {
     cursor: pointer;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .arrow.left {
-    left: 20px;
-  }
+}
 
-  .arrow.right {
+.arrow.left {
+    left: 20px;
+}
+
+.arrow.right {
     right: 20px;
-  }
+}
 
 h1 {
-    color: #146EA6;
+    color: #ffffff;
     font-weight: bold;
     font-size: 3rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow:
+        -1.5px -1.5px 0 rgb(0, 0, 0),
+        1.5px -1.5px 0 rgb(0, 0, 0),
+        -1.5px 1.5px 0 rgb(0, 0, 0),
+        1.5px 1.5px 0 rgb(0, 0, 0);
 }
 
 /*main*/
@@ -110,7 +115,7 @@ h1 {
     font-weight: bold;
     font-size: 1.5rem;
     color: #146EA6;
-    
+
 }
 
 img {
@@ -129,6 +134,11 @@ img {
     justify-content: space-around;
     color: #146EA6;
     text-decoration: none;
+}
+
+.main-link:hover {
+    color: #5F7336;
+    transition: all 0.5s;
 }
 
 
@@ -175,4 +185,3 @@ footer a {
 footer a:hover {
     color: #146EA6;
 }
-

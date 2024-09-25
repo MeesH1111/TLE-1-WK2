@@ -3,6 +3,7 @@ import { ImageSource, Sound, Resource, Loader } from 'excalibur'
 // voeg hier jouw eigen resources toe
 const Resources = {
     Test: new ImageSource('img/test.jpeg'),
+    BackgroundStart: new ImageSource('img/bg.jpg')
 
 }
 const ResourceLoader = new Loader()
