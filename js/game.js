@@ -7,7 +7,7 @@ import { intro } from './Intro.js'
 
 
 class Game extends Engine {
-
+    hp
     constructor() {
         super({
             width: 1280,
@@ -22,6 +22,8 @@ class Game extends Engine {
         this.add('Gameover', new gameover())
         this.add('Intro', new intro())
         this.goToScene('Level',)
+
+        this.hp = 5
     }
 }
 
