@@ -16,7 +16,6 @@ export class Waves extends Actor {
         this.graphics.use(sprite)
         this.pos = new Vector(200, 200)
         this.on("pointerup", () => this.waveKill())
-        this.score = 0
         console.log('hoi')
         this.actions.moveTo(Target, wavespeeds, speed)
     }
