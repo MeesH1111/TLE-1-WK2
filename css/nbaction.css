@@ -1,0 +1,140 @@
+h1 {
+    color: #146EA6;
+    font-weight: bold;
+    font-size: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    color: #146EA6;
+    font-size: 1.5rem;
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); */
+    padding-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.picture {
+    height: 4vw;
+}
+
+nav {
+    padding: 2vw 20vw;
+    margin: 0;
+    background-color: #282828;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+nav a {
+    color: #5F7336;
+    font-weight: bold;
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.nav-text,
+.nav-logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    flex: 1;
+}
+
+.nav a :hover {
+    color: #146EA6;
+}
+
+body {
+    Margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #ffffff;
+}
+
+header {
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-link {
+    margin-bottom: 0;
+    padding: 1vw 2vw;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.25rem;
+    background-color: #282828;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #146EA6;
+    text-decoration: none;
+}
+
+.main-link:hover {
+    color: #5F7336;
+    transition: all 0.5s;
+}
+
+.pipes-text {
+    padding: 0vw 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 200px;
+}
+
+footer {
+    padding: 2vw 2vw;
+    margin: 0;
+    background-color: #282828;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    flex: 3;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+}
+
+footer p {
+    color: #5F7336;
+    font-size: 0.9rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: #5F7336;
+    margin: 1vw;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+footer a:hover {
+    color: #146EA6;
+}
