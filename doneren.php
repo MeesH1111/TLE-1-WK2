@@ -37,13 +37,29 @@ mysqli_close($connection);
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Donaties</title>
     <link rel="stylesheet" href="css/doneren.css">
 </head>
 
 <body>
-    <nav> </nav>
+    <nav>
+
+        <div class="nav-text">
+            <a href="./info.html">Info</a>
+        </div>
+
+        <div class="nav-logo">
+            <img src="img/LogoB.png" alt="logo" class="picture">
+        </div>
+
+        <div class="nav-text">
+            <a href="./game.html">Game</a>
+        </div>
+    </nav>
+
     <main>
         <div class=pagediv>
             <div class=divide1>
@@ -60,7 +76,7 @@ mysqli_close($connection);
                             <input type="number" id="donation" name="donation" placeholder="€..." required min="0" max="9999" step="0.01">
                         </div>
 
-                        <button type="submit">Doneren</button>
+                        <button type="submit">Doneer</button>
                     </div>
                 </form>
             </div>
@@ -68,8 +84,8 @@ mysqli_close($connection);
             <div class=divide2>
 
                 <H1>Totaal gedoneerd bedrag</H1>
-                <img src="img\heartborder.png" hartje" width="100%">
-                <p>€ <?php echo number_format($totaal_bedrag, 2); ?></p>
+                <img class=hartje src="img\heartborder.png" hartje" width="100%">
+                <p class=hearttext>€ <?php echo number_format($totaal_bedrag, 2); ?></p>
 
             </div>
         </div>
@@ -99,6 +115,28 @@ mysqli_close($connection);
         </div>
 
     </main>
+
+    <footer>
+        <div class="footer">
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">Facebook</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-logo">
+            <div>
+                <img src="img/LogoB.png" alt="logo" class="picture">
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="#">Privacyverklaring</a>
+            <a href="#">Algemene voorwaarden</a>
+            <a href="#">Cookiebeleid</a>
+        </div>
+
+    </footer>
 </body>
 
 </html>
