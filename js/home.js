@@ -22,6 +22,7 @@ export class home extends Actor {
     Gothit(event) {
         if (event.other instanceof Waves) {
             // home wordt gesloopt
+            // pas animatie hier toe
             this.game.hp = this.game.hp - 1
         }
 
