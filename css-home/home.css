@@ -119,11 +119,11 @@ h1 {
 }
 
 img {
-    max-height: 30vw;
+    max-height: 32vw;
 }
 
 .main-link {
-    margin-bottom: 0;
+    margin-bottom: 15px;
     padding: 1vw 2vw;
     border-radius: 5px;
     font-weight: bold;
@@ -134,12 +134,14 @@ img {
     justify-content: space-around;
     color: #146EA6;
     text-decoration: none;
+    padding: 10px;
 }
 
 .main-link:hover {
     color: #5F7336;
     transition: all 0.5s;
 }
+
 
 
 
