@@ -1,5 +1,5 @@
 //import '../css/style.css';
-import { Actor, Vector, Label, Font, FontUnit, Color, Scene, Keys } from "excalibur";
+import { Actor, Vector, Label, Font, FontUnit, Color, Scene, Keys, } from "excalibur";
 import { Resources, ResourceLoader } from './resources.js';
 import { level } from "./Level.js";
 
@@ -61,7 +61,9 @@ export class intro extends Scene {
             })
         })
         this.add(this.label)
+
     }
+
 
     onPreUpdate(engine) {
         if (engine.input.keyboard.wasPressed(Keys.Space)) {
