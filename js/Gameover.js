@@ -55,7 +55,7 @@ export class gameover extends Scene {
         })
         this.add(this.label)
 
-        this.button = new Button(200,300)
+        this.button = new Button(950,730)
         this.add(this.button)
     }
 
