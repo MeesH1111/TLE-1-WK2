@@ -1,9 +1,6 @@
 //import '../css/style.css'
 import { Actor, Engine, Vector, DisplayMode, Label, Font, FontUnit } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
-import { level } from './Level.js'
-import { gameover } from './Gameover.js'
-import { intro } from './Intro.js'
 import { home } from "./home.js"
 
 export class Waves extends Actor {
