@@ -32,19 +32,23 @@ export class level extends Scene {
             this.home = new home(this.homesx[i], this.homesy[i])
             console.log(`we made a house at : ${this.home.pos}`)
             this.add(this.home)
-            this.wave = new Waves(this.homesx[1], this.homesy[1], speed)
+            this.wave = new Waves(this.homesx[i], this.homesy[i], this.speed, 1000, 1000)
+            this.add(this.wave)
         }
     }
 
-    Wavespeed(kills, previuskills) {
-
+    Wavespeed() {
+        if (this.kills - this.previuskills === 5) {
+            this.previuskills = this.kills
+            this.speed += 50
+            this.wavestate += 4
+        }
         if (this.currentwaves !== this.wavestate) {
             let toSpawn = 5 - this.currentwaves
             for (let i = 0; i < toSpawn; i++)
                 this.Target = randomIntInRange(0, 4)
-            console.log(this.Target)
-            console.log(this.homesx[this.Target])
-            this.wave = new Waves(this.homesx[this.Target], this.homesy[this.Target], speed)
+
+            this.wave = new Waves(this.homesx[this.Target], this.homesy[this.Target], this.speed)
             this.add(this.wave)
         }
     }

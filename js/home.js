@@ -23,11 +23,11 @@ export class home extends Actor {
         if (event.other instanceof Waves) {
             // home wordt gesloopt
             // pas animatie hier toe
-            this.game.hp = this.game.hp - 1
+            this.scene.hp = this.scene.hp - 1
         }
 
         if (this.game.hp <= 0) {
-            this.scene.game.goToScene("Gameover")
+            // this.scene.game.goToScene("Gameover")
         }
     }
 

@@ -6,24 +6,29 @@ import { gameover } from './Gameover.js'
 import { intro } from './Intro.js'
 
 export class Waves extends Actor {
-    constructor() {
+    constructor(targetx, targety, speed, x, y) {
         super({ width: Resources.Test.width, height: Resources.Test.height })
-
+        this.pos = new Vector(x, y)
+        this.targetx = targetx
+        this.targety = targety
+        this.speed = speed
     }
-    onInitialize(Target, wavespeeds, speed, engine) {
+    onInitialize(engine) {
         this.game = engine
         const sprite = Resources.Test.toSprite()
         this.graphics.use(sprite)
         this.pos = new Vector(200, 200)
         this.on("pointerup", () => this.waveKill())
         console.log('hoi')
-        this.actions.moveTo(Target, wavespeeds, speed)
+        this.actions.moveTo(this.targetx, this.targety, this.speed)
     }
 
     waveKill() {
         this.kill()
         this.score++
-        this.game.kills++
+        this.scene.Wavespeed()
+        this.scene.kills++
+        console.log(this.scene.kills)
     }
 
 }
