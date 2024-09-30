@@ -1,3 +1,20 @@
+<?php
+  $quotes = [
+    "Samen kunnen we het tij keren.",
+    "Kleine acties maken een groot verschil.",
+    "De toekomst van Tuvalu begint vandaag.",
+    "Elke druppel telt.",
+    "Hoop stijgt hoger dan de zee.",
+    "Bescherm het eiland, bescherm de toekomst.",
+    "We kunnen leren de golven te beheersen.",
+    "Handel nu, voordat het te laat is."
+];
+
+
+    $willekeurigeQuote = $quotes[array_rand($quotes)];
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -31,7 +48,9 @@
         <span class="arrow left" id="prev">←</span>
         <span class="arrow right" id="next">→</span>
         <h1 id="headline"> ZuiverBuis </h1>
+        <h2><?php echo $willekeurigeQuote; ?></h2>
     </header>
+
     <script>
         const imgBackgound = [
             'img/background1.jpg',
@@ -42,7 +61,7 @@
             'img/background6.jpg'
         ]
 
-        let currentIndex = 0;
+        let currentIndex = Math.floor(Math.random() * imgBackgound.length);
         const header = document.querySelector('.header-home');
 
 
@@ -94,6 +113,7 @@
                
             </div>
         </section>
+        
     </main>
 
     <footer>
