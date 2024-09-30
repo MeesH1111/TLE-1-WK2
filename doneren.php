@@ -40,11 +40,13 @@ mysqli_close($connection);
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <script defer src="animation.js"></script>
     <title>Donaties</title>
     <link rel="stylesheet" href="css/doneren.css">
 </head>
 
-<body>
+<body id=animatedbody>
     <nav>
 
         <div class="nav-text">
@@ -59,6 +61,35 @@ mysqli_close($connection);
             <a class=navlink href="./game.html">Game</a>
         </div>
     </nav>
+
+    <div id="animation-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var animationContainer = document.getElementById('animation-container');
+            var animation = lottie.loadAnimation({
+                container: animationContainer,
+                renderer: 'svg',
+                loop: false,
+                autoplay: false,
+                path: 'Animation - 1727257181574.json'
+            });
+
+
+            if (sessionStorage.getItem('playAnimation') === 'true') {
+                animationContainer.style.display = 'block';
+                animation.play();
+                sessionStorage.removeItem('playAnimation');
+            }
+
+            document.getElementById('thebutton').addEventListener('click', function() {
+                if (document.querySelector('form').checkValidity()) {
+                    sessionStorage.setItem('playAnimation', 'true');
+                }
+            });
+        });
+    </script>
+
 
     <main>
         <div class=pagediv>
@@ -76,7 +107,7 @@ mysqli_close($connection);
                             <input type="number" id="donation" name="donation" placeholder="€..." required min="0" max="9999" step="0.01">
                         </div>
 
-                        <button type="submit">Doneer</button>
+                        <button id=thebutton type="submit">Doneer</button>
                     </div>
                 </form>
             </div>
@@ -84,7 +115,7 @@ mysqli_close($connection);
             <div class=divide2>
 
                 <H1>Totaal gedoneerd bedrag</H1>
-                <img class=hartje src="img\heartborder.png" hartje" width="100%">
+                <img class=hartje id=animatedbody src="img\heartborder.png" hartje" width="100%">
                 <p class=hearttext>€ <?php echo number_format($totaal_bedrag, 2); ?></p>
 
             </div>
