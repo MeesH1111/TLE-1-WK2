@@ -1,40 +1,3 @@
-<?php
-require "../TLE-1-WK2/briefdb.php";
-
-$message = "";
-$message2 = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstname = ($_POST['first_name']);
-    $lastname = ($_POST['last_name']);
-    $email = ($_POST['email']);
-
-
-    $errors = [];
-
-    if (empty($errors)) {
-        $check_sql = "SELECT * FROM subscriber WHERE email = '$email'";
-        $result = mysqli_query($connection, $check_sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            echo "Dit emailadres is al ingeschreven.";
-        } else {
-            $sql = "INSERT INTO subscriber (first_name, last_name, email) VALUES ('$firstname', '$lastname', '$email')";
-
-            if (!mysqli_query($connection, $sql)) {
-                die("Fout bij invoegen: " . mysqli_error($connection));
-            }
-
-            $message = "Bedankt voor je aanmelding, $firstname $lastname.";
-            $message2 = " Geniet van onze nieuwsbrief!";
-        }
-    } else {
-        foreach ($errors as $error) {
-            echo $error;
-        }
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,12 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </nav>
     <header>
-        <H1><?= $message ?></H1>
+        <H1></H1>
     </header>
     <main>
         <div class="pipes-text">
-            <h2><?= $message2 ?></h2>
-            <a href="./info.php" class="main-link">Home</a>
+            <h2></h2>
+            <a href="./info.html" class="main-link">Home</a>
         </div>
     </main>
 

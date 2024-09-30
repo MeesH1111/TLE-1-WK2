@@ -1,20 +1,18 @@
 <?php
-// required when working with sessions
-session_start();
 
 $login = false;
-// Is user logged in?
+// kijken of user al is ingelogd
 
-/** @var mysqli $db */
 require "../TLE-1-WK2/dblogin.php";
 
-if (isset($_POST['submit'])) {
+// data ophalen
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $emial = mysqli_real_escape_string($connection, $_POST['email']);
+    $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-    // Get form data
-    $email = mysqli_escape_string($db, $_POST['email']);
-    $password = $_POST['password'];
+    $sql = "INSERT INTO users (email, password) VALUES ('$email', '$password')";
 
-    // Server-side validation
+    // checken of er iets is ingevuld
     $errors = [];
     if ($email == "") {
         $errors['email'] = "Enter your email";
@@ -23,13 +21,10 @@ if (isset($_POST['submit'])) {
         $errors['password'] = "Enter your password";
     }
 
-    // If data valid
     if (empty($errors)) {
 
-        // SELECT the user from the database, based on the email address.
         $query = "SELECT * FROM users WHERE `email` = '$email' ";
-        $result = mysqli_query($db,$query);
-        // check if the user exists\
+        $result = mysqli_query($connection, $query);
         if (mysqli_num_rows($result) == 1) {
 
             // Get user data from result
@@ -57,7 +52,83 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-<!doctype html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/nb.css">
+</head>
+
+<body>
+    <nav>
+
+        <div class="nav-text">
+            <a href="./doneren.php">Donaties</a>
+        </div>
+
+        <div class="nav-logo">
+            <img src="img/LogoB.png" alt="logo" class="picture">
+        </div>
+
+        <div class="nav-text">
+            <a href="./game.html">Game</a>
+        </div>
+    </nav>
+    <header>
+        <H1>Login</H1>
+    </header>
+    <main>
+        <div class="form">
+            <form action="inlogaction.php" method="POST">
+                <div class="formfield">
+                    <div class="label">
+                        <label for="email">Email</label>
+                    </div>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="formfield">
+                    <div class="label">
+                        <label for="password">Password</label>
+                    </div>
+                    <input type="text" id="password" name="password" required>
+                </div>              
+                <input type="submit" value="Submit">
+
+            </form>
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="footer">
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">Facebook</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-logo">
+            <div>
+                <img src="img/LogoB.png" alt="logo" class="picture">
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="#">Privacyverklaring</a>
+            <a href="#">Algemene voorwaarden</a>
+            <a href="#">Cookiebeleid</a>
+        </div>
+
+    </footer>
+</body>
+
+</html>
+
+<!-- <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -126,7 +197,7 @@ if (isset($_POST['submit'])) {
                 <div class="field is-horizontal">
                     <div class="field-label is-normal"></div>
                     <div class="field-body">
-                        <button class="button is-link is-fullwidth" type="submit" name="submit">Log in</button>
+                        <button class="button is-link is-fullwidth" type="submit" name="submit" href=''>Log in</button>
                     </div>
                 </div>
                 <div class="field-label is-normal"></div>
@@ -140,4 +211,4 @@ if (isset($_POST['submit'])) {
 </div>
 </section>
 </body>
-</html>
+</html> -->
