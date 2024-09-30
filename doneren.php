@@ -25,7 +25,7 @@ if ($result) {
     $totaal_bedrag = 0;
 }
 
-$sql = "SELECT naam, bedrag FROM donaties";
+$sql = "SELECT naam, bedrag FROM donaties ORDER BY bedrag DESC";
 $result_donaties = mysqli_query($connection, $sql);
 
 mysqli_close($connection);
@@ -40,11 +40,13 @@ mysqli_close($connection);
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
     <title>Donaties</title>
     <link rel="stylesheet" href="css/doneren.css">
+    <audio id="animationSound" src="cashier-quotka-chingquot-sound-effect-129698.mp3" preload="auto"></audio>
 </head>
 
-<body>
+<body id=animatedbody>
     <nav>
 
         <div class="nav-text">
@@ -59,6 +61,61 @@ mysqli_close($connection);
             <a class=navlink href="./game.html">Game</a>
         </div>
     </nav>
+
+    <div id="animation-container"></div>
+    <div id="animation-container2"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var animationContainer = document.getElementById('animation-container');
+            var animationContainer2 = document.getElementById('animation-container2');
+            var animationContainer3 = document.getElementById('animation-container3');
+            var animationSound = document.getElementById('animationSound');
+
+            var animation = lottie.loadAnimation({
+                container: animationContainer,
+                renderer: 'svg',
+                loop: false,
+                autoplay: false,
+                path: 'Animation - 1727257181574.json'
+            });
+
+            var animation2 = lottie.loadAnimation({
+                container: animationContainer2,
+                renderer: 'svg',
+                loop: false,
+                autoplay: false,
+                path: 'Animation - 1727686202109.json'
+            });
+
+            var animation3 = lottie.loadAnimation({
+                container: animationContainer3,
+                renderer: 'svg',
+                loop: false,
+                autoplay: false,
+                path: 'Animation - 1727688021743.json'
+            });
+
+
+            if (sessionStorage.getItem('playAnimation') === 'true') {
+                animationContainer.style.display = 'block';
+                animationContainer2.style.display = 'block';
+                animationContainer3.style.display = 'block';
+                animation.play();
+                animation2.play();
+                animation3.play();
+                animationSound.play();
+                sessionStorage.removeItem('playAnimation');
+            }
+
+            document.getElementById('thebutton').addEventListener('click', function() {
+                if (document.querySelector('form').checkValidity()) {
+                    sessionStorage.setItem('playAnimation', 'true');
+                }
+            });
+        });
+    </script>
+
 
     <main>
         <div class=pagediv>
@@ -76,7 +133,7 @@ mysqli_close($connection);
                             <input type="number" id="donation" name="donation" placeholder="€..." required min="0" max="9999" step="0.01">
                         </div>
 
-                        <button type="submit">Doneer</button>
+                        <button id=thebutton type="submit">Doneer</button>
                     </div>
                 </form>
             </div>
@@ -84,6 +141,7 @@ mysqli_close($connection);
             <div class=divide2>
 
                 <H1>Totaal gedoneerd bedrag</H1>
+                <div id="animation-container3"></div>
                 <img class=hartje src="img\heartborder.png" hartje" width="100%">
                 <p class=hearttext>€ <?php echo number_format($totaal_bedrag, 2); ?></p>
 
@@ -96,12 +154,27 @@ mysqli_close($connection);
         <div>
             <table>
                 <tr>
+                    <th>Titel</th>
                     <th>Naam</th>
                     <th>Bedrag</th>
                 </tr>
                 <?php if ($result_donaties): ?>
                     <?php while ($row = mysqli_fetch_assoc($result_donaties)): ?>
-                        <tr>
+                        <?php
+                        $class = '';
+                        if ($row['bedrag'] >= 100) {
+                            $tier = 'Eilandredders';
+                            $class = 'high-donation';
+                        } elseif ($row['bedrag'] >= 50) {
+                            $tier = 'Klimaat Advocaat';
+                            $class = 'medium-donation';
+                        } else {
+                            $tier = 'Milieu Maatje';
+                            $class = 'low-donation';
+                        }
+                        ?>
+                        <tr class="<?php echo $class; ?>">
+                            <td><?php echo $tier; ?></td>
                             <td><?php echo htmlspecialchars($row['naam']); ?></td>
                             <td>€ <?php echo number_format((float)$row['bedrag'], 2); ?></td>
                         </tr>

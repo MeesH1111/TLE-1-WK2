@@ -7,7 +7,7 @@ import { intro } from './Intro.js'
 import { home } from "./home.js"
 
 export class Waves extends Actor {
-    constructor(targetx, targety, speed, x, y) {
+    constructor(targetx, targety, speed, x, y, score) {
         super({ width: Resources.Test.width, height: Resources.Test.height })
         this.pos = new Vector(x, y)
         this.targetx = targetx

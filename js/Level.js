@@ -15,6 +15,9 @@ export class level extends Scene {
     }
 
     onInitialize() {
+        this.score = 0
+        this.waveposdecider = 0
+        this.wavepos = 0
         this.kills = 0
         this.previuskills = 0
         this.currentwaves = 0
@@ -29,17 +32,43 @@ export class level extends Scene {
         backgroundStart.pos = new Vector(960, 540);
         this.add(backgroundStart);
 
+        this.Label = new Label({
+            text: `Score: ${this.score}`,
+            pos: new Vector(20, 40),
+            font: new Font({
+                family: 'Impact',
+                size: 170,
+                unit: FontUnit.Px
+            })
+        })
+        this.add(this.Label)
+
+        this.waveposdecider = Math.round(Math.random())
+
+        if (this.waveposdecider === 0) {
+            this.wavepos = Math.floor(Math.random() * (1000 - 800 + 1) + 800)
+        } else if (this.waveposdecider === 1) {
+            this.wavepos = Math.floor(Math.random() * (200 - 0 + 1) + 0)
+        }
+
         for (let i = 0; i < this.homesx.length; i++) {
             console.log(this.homesx[i])
             this.home = new home(this.homesx[i], this.homesy[i])
             console.log(`we made a house at : ${this.home.pos}`)
             this.add(this.home)
-            this.wave = new Waves(this.homesx[i], this.homesy[i], this.speed, 1000, 1000)
+            this.wave = new Waves(this.homesx[i], this.homesy[i], this.speed, Math.floor(Math.random() * (1900 - 100 + 1)) + 100, this.wavepos)
             this.add(this.wave)
+            console.log(`we made a wave at : ${this.wave.pos}`)
         }
     }
 
     Wavespeed() {
+        this.waveposdecider = Math.round(Math.random())
+        if (this.waveposdecider === 0) {
+            this.wavepos = Math.floor(Math.random() * (1000 - 800 + 1) + 800)
+        } else if (this.waveposdecider === 1) {
+            this.wavepos = Math.floor(Math.random() * (200 - 0 + 1) + 0)
+        }
         if (this.kills - this.previuskills === 5) {
             this.previuskills = this.kills
             this.speed += 50
@@ -49,12 +78,13 @@ export class level extends Scene {
             let toSpawn = 5 - this.currentwaves
             for (let i = 0; i < toSpawn; i++)
                 this.Target = randomIntInRange(0, 4)
-            this.wave = new Waves(this.homesx[this.Target], this.homesy[this.Target], this.speed)
+            this.wave = new Waves(this.homesx[this.Target], this.homesy[this.Target], this.speed, Math.floor(Math.random() * (1900 - 100 + 1)) + 100, this.wavepos)
             this.add(this.wave)
+            this.updateScore()
         }
     }
-
-    // onDeactivate() {
-    //     this.actors.all.kill()
-    // }
+    updateScore() {
+        this.score++
+        this.Label.text = `Score: ${this.score}`
+    }
 }

@@ -10,6 +10,11 @@ export class gameover extends Scene {
         super();
     }
     onInitialize() {
+
+        const BackgroundEnd = new Actor();
+        BackgroundEnd.graphics.use(Resources.BackgroundEnd.toSprite());
+        BackgroundEnd.pos = new Vector(960, 540);
+        this.add(BackgroundEnd);
           
         this.Label = new Label({
             text: 'Game over',
@@ -56,6 +61,7 @@ export class gameover extends Scene {
         this.add(this.label)
 
         this.button = new Button(950,730)
+        this.button.scale = new Vector (2,2)
         this.add(this.button)
     }
 

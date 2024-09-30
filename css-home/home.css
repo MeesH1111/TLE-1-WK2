@@ -53,12 +53,13 @@ nav a {
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     border-bottom: solid 2px #282828;
     height: 50vh;
     position: relative;
     transition: background-image 1s ease-in-out;
+    align-items: center;
 }
 
 .arrow {
@@ -89,6 +90,19 @@ h1 {
         1.5px -1.5px 0 rgb(0, 0, 0),
         -1.5px 1.5px 0 rgb(0, 0, 0),
         1.5px 1.5px 0 rgb(0, 0, 0);
+}
+
+h2 {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2rem;
+    text-shadow:
+        -1.5px -1.5px 0 rgb(0, 0, 0),
+        1.5px -1.5px 0 rgb(0, 0, 0),
+        -1.5px 1.5px 0 rgb(0, 0, 0),
+        1.5px 1.5px 0 rgb(0, 0, 0);
+        align-items: center;
+        width: max-content;
 }
 
 /*main*/

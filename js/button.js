@@ -12,7 +12,7 @@ export class Button extends Actor {
     }
     onInitialize(engine) {
         this.game = engine
-        const sprite = Resources.Test.toSprite()
+        const sprite = Resources.ButtonDonate.toSprite()
         this.graphics.use(sprite)
 
         this.on('pointerup', () => {
