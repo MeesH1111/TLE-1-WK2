@@ -163,7 +163,7 @@ mysqli_close($connection);
                         <?php
                         $class = '';
                         if ($row['bedrag'] >= 100) {
-                            $tier = 'Eilandredders';
+                            $tier = 'Eilandredder';
                             $class = 'high-donation';
                         } elseif ($row['bedrag'] >= 50) {
                             $tier = 'Klimaat Advocaat';
@@ -174,7 +174,10 @@ mysqli_close($connection);
                         }
                         ?>
                         <tr class="<?php echo $class; ?>">
-                            <td><?php echo $tier; ?></td>
+                            <td>
+                                <img src="img/reward(<?php echo $tier; ?>).png" alt="Icoon" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;">
+                                <?php echo $tier; ?>
+                            </td>
                             <td><?php echo htmlspecialchars($row['naam']); ?></td>
                             <td>€ <?php echo number_format((float)$row['bedrag'], 2); ?></td>
                         </tr>
