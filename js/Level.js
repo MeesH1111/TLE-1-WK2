@@ -19,6 +19,8 @@ export class level extends Scene {
         this.previuskills = 0
         this.currentwaves = 0
         this.speed = 100
+        this.hp = 5
+        console.log(this.hp)
         this.homesx = [700, 400, 300, 600, 800]
         this.homesy = [500, 700, 400, 500, 800]
 
@@ -47,9 +49,12 @@ export class level extends Scene {
             let toSpawn = 5 - this.currentwaves
             for (let i = 0; i < toSpawn; i++)
                 this.Target = randomIntInRange(0, 4)
-
             this.wave = new Waves(this.homesx[this.Target], this.homesy[this.Target], this.speed)
             this.add(this.wave)
         }
     }
+
+    // onDeactivate() {
+    //     this.actors.all.kill()
+    // }
 }
