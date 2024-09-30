@@ -18,7 +18,7 @@ export class Waves extends Actor {
         // this.pos = new Vector(200, 200)
         this.scale = new Vector(0.4, 0.4)
         this.on("pointerup", () => this.waveKill())
-        console.log('hoi')
+        //  console.log('hoi')
         this.actions.moveTo(this.targetx, this.targety, this.speed)
         this.on('collisionstart', (event) => this.hitTarget(event, engine))
     }
@@ -26,20 +26,23 @@ export class Waves extends Actor {
     waveKill() {
         this.kill()
         this.score++
+        this.scene.currentwaves -= 1
         this.scene.Wavespeed()
         this.scene.kills++
-        console.log(this.scene.kills)
+        console.log(this.scene.currentwaves)
+        this.scene.updateScore()
     }
 
     hitTarget(event, engine) {
         if (event.other instanceof home) {
             if (event.other.pos.x === this.targetx && event.other.pos.y === this.targety) {
-                console.log("Target hit")
-                console.log(this.scene.hp)
+                //console.log("Target hit")
+                //   console.log(this.scene.hp)
                 this.kill()
                 this.scene.hp -= 1
-                console.log(this.scene.hp)
+                this.scene.Wavespeed()
                 if (this.scene.hp === 0) {
+
                     engine.goToScene('Gameover')
                 }
             }
