@@ -10,19 +10,23 @@ export class level extends Scene {
     kills
     currentwaves
     previuskills
+    toSpawn
+    hp
     constructor() {
         super();
     }
 
-    onInitialize() {
+    onActivate() {
+        this.toSpawn = 0
         this.score = 0
         this.waveposdecider = 0
         this.wavepos = 0
         this.kills = 0
         this.previuskills = 0
-        this.currentwaves = 0
-        this.speed = 100
+        this.currentwaves = 5
+        this.speed = 50
         this.hp = 5
+        this.wavestate = 5
         console.log(this.hp)
         this.homesx = [700, 400, 300, 600, 800]
         this.homesy = [500, 700, 400, 500, 800]
@@ -71,17 +75,23 @@ export class level extends Scene {
         }
         if (this.kills - this.previuskills === 5) {
             this.previuskills = this.kills
-            this.speed += 50
-            this.wavestate += 4
+            this.speed += 10
+            this.wavestate += 1
         }
         if (this.currentwaves !== this.wavestate) {
-            let toSpawn = 5 - this.currentwaves
-            for (let i = 0; i < toSpawn; i++)
+            this.toSpawn = this.wavestate - this.currentwaves
+            console.log(this.toSpawn)
+            for (let i = 0; i <= this.toSpawn; i++) {
+                this.toSpawn--
                 this.Target = randomIntInRange(0, 4)
-            this.wave = new Waves(this.homesx[this.Target], this.homesy[this.Target], this.speed, Math.floor(Math.random() * (1900 - 100 + 1)) + 100, this.wavepos)
-            this.add(this.wave)
-            this.updateScore()
+                this.wave = new Waves(this.homesx[this.Target], this.homesy[this.Target], this.speed, Math.floor(Math.random() * (1900 - 100 + 1)) + 100, this.wavepos)
+                this.add(this.wave)
+                this.currentwaves += 1
+                console.log(this.toSpawn)
+            }
+
         }
+
     }
     updateScore() {
         this.score++

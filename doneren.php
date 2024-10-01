@@ -50,7 +50,7 @@ mysqli_close($connection);
     <nav>
 
         <div class="nav-text">
-            <a class=navlink href="./info.html">Info</a>
+            <a class=navlink href="./info.php">Info</a>
         </div>
 
         <div class="nav-logo">
