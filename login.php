@@ -3,10 +3,10 @@
 $login = false;
 // kijken of user al is ingelogd
 
-require "../TLE-1-WK2/dblogin.php";
-
 // data ophalen
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    require "../TLE-1-WK2/dblogin.php";
+
     $email = mysqli_real_escape_string($connection, $_POST['email']);
     $password = mysqli_real_escape_string($connection, $_POST['password']);
 
@@ -25,26 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $query = "SELECT * FROM users WHERE `email` = '$email' ";
         $result = mysqli_query($connection, $query);
         if (mysqli_num_rows($result) == 1) {
-
+            
             $user = mysqli_fetch_assoc($result);
-        
-            // Check if the provided password matches the stored password in the database
-            if (password_verify($password, $user['password'])) {
-                // Store the user in the session
-                $_SESSION['login'] = true;
-                // Redirect to secure page
-                $login = true;
 
-                // Credentials not valid
-            } else {
+            if ($password == $user['password']) {
+                header('Location: info.php');
+            }  else {
                 //error incorrect log in
                 $errors['loginFailed'] = "You failed to login";
-
+                    print_r($errors);
             }
-            // User doesn't exist
-        } else {
-            //error incorrect log in
-            $errors['loginFailed'] = "You failed to login";
         }
         mysqli_close($connection);
     }
@@ -81,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </header>
     <main>
         <div class="form">
-            <form action="info.php" method="POST">
+            <form action="" method="POST">
                 <div class="formfield">
                     <div class="label">
                         <label for="email">Email</label>
