@@ -30,9 +30,13 @@
 <body>
 
     <nav>
+        
+    <div class="nav-text">
+            <a class=navlink href="./register.php">Register</a>
+        </div>
 
         <div class="nav-text">
-            <a class=navlink href="./doneren.php">Donaties</a>
+            <a class=navlink href="./login.php">Login</a>
         </div>
 
         <div class="nav-logo">
@@ -41,6 +45,10 @@
 
         <div class="nav-text">
             <a class=navlink href="./game.html">Game</a>
+        </div>
+
+        <div class="nav-text">
+            <a class=navlink href="./doneren.php">Doneren</a>
         </div>
     </nav>
 

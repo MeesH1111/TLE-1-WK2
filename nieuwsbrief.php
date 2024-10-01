@@ -43,9 +43,13 @@ mysqli_close($connection)
 
 <body>
     <nav>
+        
+    <div class="nav-text">
+            <a class=navlink href="./register.php">Register</a>
+        </div>
 
         <div class="nav-text">
-            <a href="./doneren.php">Donaties</a>
+            <a class=navlink href="./login.php">Login</a>
         </div>
 
         <div class="nav-logo">
@@ -53,7 +57,11 @@ mysqli_close($connection)
         </div>
 
         <div class="nav-text">
-            <a href="./game.html">Game</a>
+            <a class=navlink href="./game.html">Game</a>
+        </div>
+
+        <div class="nav-text">
+            <a class=navlink href="./doneren.php">Doneren</a>
         </div>
     </nav>
     <header>

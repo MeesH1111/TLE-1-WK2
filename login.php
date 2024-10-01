@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $query = "SELECT * FROM users WHERE `email` = '$email' ";
         $result = mysqli_query($connection, $query);
-        
+
         if (mysqli_num_rows($result) == 1) {
             
             $user = mysqli_fetch_assoc($result);
@@ -54,9 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <nav>
+ <div class="nav-text">
+            <a class=navlink href="./register.php">Register</a>
+        </div>
 
         <div class="nav-text">
-            <a href="./doneren.php">Donaties</a>
+            <a class=navlink href="./info.php">Info</a>
         </div>
 
         <div class="nav-logo">
@@ -64,7 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <div class="nav-text">
-            <a href="./game.html">Game</a>
+            <a class=navlink href="./game.html">Game</a>
+        </div>
+
+        <div class="nav-text">
+            <a class=navlink href="./doneren.php">Doneren</a>
         </div>
     </nav>
     <header>
