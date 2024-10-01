@@ -2,6 +2,7 @@
 import { Actor, Vector, Label, Font, FontUnit, Color, Scene, Keys } from "excalibur";
 import { Resources, ResourceLoader } from './resources.js';
 import {Button} from './button.js'
+import { level } from "./Level.js";
 
 
 
@@ -15,6 +16,11 @@ export class gameover extends Scene {
         BackgroundEnd.graphics.use(Resources.BackgroundEnd.toSprite());
         BackgroundEnd.pos = new Vector(960, 540);
         this.add(BackgroundEnd);
+
+        const backgroundTreeStart = new Actor();
+        backgroundTreeStart.graphics.use(Resources.BackgroundTree.toSprite());
+        backgroundTreeStart.pos = new Vector(960, 540);
+        this.add(backgroundTreeStart);
           
         this.Label = new Label({
             text: 'Game over',
@@ -67,7 +73,10 @@ export class gameover extends Scene {
 
     onPreUpdate(engine) {
         if (engine.input.keyboard.wasPressed(Keys.Space)) {
+            engine.removeScene('Level')
+            engine.add('Level', new level())
             engine.goToScene('Intro')
+            
         }
     }
 }

@@ -18,6 +18,11 @@ export class intro extends Scene {
         backgroundStart.pos = new Vector(960, 540);
         this.add(backgroundStart);
 
+        const backgroundTreeStart = new Actor();
+        backgroundTreeStart.graphics.use(Resources.BackgroundTree.toSprite());
+        backgroundTreeStart.pos = new Vector(960, 540);
+        this.add(backgroundTreeStart);
+
         this.Label = new Label({
             text: 'Save Tuvalu',
             pos: new Vector(575, 200),
