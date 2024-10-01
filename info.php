@@ -38,9 +38,11 @@
         <div class="nav-text">
             <a class=navlink href="./login.php">Login</a>
         </div>
-
+        
         <div class="nav-logo">
+        <a class=navlink href="./info.php">
             <img src="img/LogoB.png" alt="logo" class="picture">
+        </a>
         </div>
 
         <div class="nav-text">

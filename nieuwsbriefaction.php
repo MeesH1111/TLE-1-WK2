@@ -48,16 +48,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <nav>
 
+    <div class="nav-text">
+            <a class=navlink href="./info.php">Info</a>
+        </div>
+
         <div class="nav-text">
-            <a href="./doneren.php">Donaties</a>
+            <a class=navlink href="./login.php">Login</a>
         </div>
 
         <div class="nav-logo">
+        <a class=navlink href="./info.php">
             <img src="img/LogoB.png" alt="logo" class="picture">
+        </a>
         </div>
 
         <div class="nav-text">
-            <a href="./game.html">Game</a>
+            <a class=navlink href="./game.html">Game</a>
+        </div>
+
+        <div class="nav-text">
+            <a class=navlink href="./doneren.php">Doneren</a>
         </div>
     </nav>
     <header>
