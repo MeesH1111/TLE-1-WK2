@@ -58,7 +58,7 @@
         <span class="arrow left" id="prev">←</span>
         <span class="arrow right" id="next">→</span>
         <h1 id="headline"> ZuiverBuis </h1>
-        <h2><?php echo $willekeurigeQuote; ?></h2>
+        <h2 id="quotes"><?php echo $willekeurigeQuote; ?></h2>
     </header>
 
     <script>
@@ -96,6 +96,25 @@
             currentIndex = (currentIndex - 1 + imgBackgound.length) % imgBackgound.length;
             changeBackground(currentIndex);
         });
+
+
+           // Quotes array from PHP
+    const quotes = <?php echo json_encode($quotes); ?>;
+    
+    let currentQuote = 0;
+    const quoteBox = document.getElementById('quotes');
+
+    // Function to update quote
+    function updateQuote() {
+        quoteBox.innerText = quotes[currentQuote];
+        currentQuote = (currentQuote + 1) % quotes.length; // Loop through quotes
+    }
+
+    // Initial quote
+    updateQuote();
+
+    // Change quote every 5 seconds (5000 milliseconds)
+    setInterval(updateQuote, 5000);
 
     </script>
 
