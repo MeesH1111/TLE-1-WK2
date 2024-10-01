@@ -23,7 +23,7 @@ nav {
 }
 
 nav a {
-    color: #5F7336;
+    color: #146EA6;
     font-weight: bold;
     font-size: 1.25rem;
     display: flex;
@@ -40,8 +40,8 @@ nav a {
     flex: 1;
 }
 
-.nav a :hover {
-    color: #146EA6;
+nav a:hover {
+    color: #5F7336;
 }
 
 header {
