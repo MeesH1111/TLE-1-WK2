@@ -1,16 +1,20 @@
+
 <?php
+ 
 if (isset($_POST['submit'])) {
 
-    /** @var mysqli $db */
-    require "../TLE-1-WK2/dblogin.php";
+ /** @var mysqli $db */
+ require "../TLE-1-WK2/dblogin.php";
 
     // Get form data
-    $email = mysqli_escape_string($connection, $_POST['email']);
-    $password = mysqli_escape_string($connection, $_POST['password']);
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $password = mysqli_real_escape_string($connection, $_POST['password']);
 
     // Server-side validation
     $errors = [];
-
+if (!$connection) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
     if ($email == "") {
         $errors['email'] = "Enter your email";
     }
@@ -22,11 +26,12 @@ if (isset($_POST['submit'])) {
     if (empty($errors)) {
 
         // create a secure password, with the PHP function password_hash()
-        $password = password_hash($password, PASSWORD_DEFAULT);
+       // $password = password_hash($password, PASSWORD_DEFAULT);
 
         // store the new user in the database.
         $query = "INSERT INTO users(email, password)
 VALUES ('$email','$password')";
+
         $result = mysqli_query($connection, $query);
         // If query succeeded
         if ($result) {
@@ -77,7 +82,7 @@ VALUES ('$email','$password')";
 
     <main>
         <div class="form">
-            <form action="inlogaction.php" method="POST">
+            <form action="register.php" method="POST">
                 <div class="formfield">
                     <div class="label">
                         <label for="email">Email</label>
@@ -89,8 +94,11 @@ VALUES ('$email','$password')";
                         <label for="password">Password</label>
                     </div>
                     <input type="text" id="password" name="password" required>
+
                 </div>
-                <input type="submit" value="Submit">
+
+                <input type="submit" name="submit" value="Submit">
+
 
             </form>
         </div>
