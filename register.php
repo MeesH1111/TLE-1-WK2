@@ -1,54 +1,47 @@
 <?php
+if (isset($_POST['submit'])) {
 
-$login = false;
-// kijken of user al is ingelogd
+    /** @var mysqli $db */
+    require "../TLE-1-WK2/dblogin.php";
 
-require "../TLE-1-WK2/dblogin.php";
+    // Get form data
+    $email = mysqli_escape_string($connection, $_POST['email']);
+    $password = mysqli_escape_string($connection, $_POST['password']);
 
-// data ophalen
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = mysqli_real_escape_string($connection, $_POST['email']);
-    $password = mysqli_real_escape_string($connection, $_POST['password']);
-
-    // checken of er iets is ingevuld
+    // Server-side validation
     $errors = [];
+
     if ($email == "") {
         $errors['email'] = "Enter your email";
     }
     if ($password == "") {
         $errors['password'] = "Enter your password";
     }
-    
 
+    // If data valid
     if (empty($errors)) {
 
-        $query = "SELECT * FROM users WHERE `email` = '$email' ";
+        // create a secure password, with the PHP function password_hash()
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+        // store the new user in the database.
+        $query = "INSERT INTO users(email, password)
+VALUES ('$email','$password')";
         $result = mysqli_query($connection, $query);
-        if (mysqli_num_rows($result) == 1) {
+        // If query succeeded
+        if ($result) {
 
-            $user = mysqli_fetch_assoc($result);
-        
-            // Check if the provided password matches the stored password in the database
-            if (password_verify($password, $user['password'])) {
-                // Store the user in the session
-                $_SESSION['login'] = true;
-                // Redirect to secure page
-                $login = true;
-
-                // Credentials not valid
-            } else {
-                //error incorrect log in
-                $errors['loginFailed'] = "You failed to login";
-
-            }
-            // User doesn't exist
+            // Redirect to login page
+            header('location: login.php');
+            exit;
         } else {
-            //error incorrect log in
-            $errors['loginFailed'] = "You failed to login";
+            $errors['db'] = mysqli_error($connection);
         }
+        // Exit the code
         mysqli_close($connection);
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -75,13 +68,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="nav-text">
             <a href="./game.html">Game</a>
         </div>
+
     </nav>
+
     <header>
-        <H1>Login</H1>
+        <H1>Register</H1>
     </header>
+
     <main>
         <div class="form">
-            <form action="info.php" method="POST">
+            <form action="inlogaction.php" method="POST">
                 <div class="formfield">
                     <div class="label">
                         <label for="email">Email</label>
@@ -93,13 +89,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="password">Password</label>
                     </div>
                     <input type="text" id="password" name="password" required>
-                </div>              
+                </div>
                 <input type="submit" value="Submit">
 
             </form>
         </div>
     </main>
-
 
     <footer>
         <div class="footer">
