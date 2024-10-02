@@ -1,10 +1,9 @@
-
 <?php
- 
+
 if (isset($_POST['submit'])) {
 
- /** @var mysqli $db */
- require "../TLE-1-WK2/dblogin.php";
+    /** @var mysqli $db */
+    require "../TLE-1-WK2/dblogin.php";
 
     // Get form data
     $email = mysqli_real_escape_string($connection, $_POST['email']);
@@ -12,9 +11,9 @@ if (isset($_POST['submit'])) {
 
     // Server-side validation
     $errors = [];
-if (!$connection) {
-    die("Database connection failed: " . mysqli_connect_error());
-}
+    if (!$connection) {
+        die("Database connection failed: " . mysqli_connect_error());
+    }
     if ($email == "") {
         $errors['email'] = "Enter your email";
     }
@@ -26,7 +25,7 @@ if (!$connection) {
     if (empty($errors)) {
 
         // create a secure password, with the PHP function password_hash()
-       // $password = password_hash($password, PASSWORD_DEFAULT);
+        // $password = password_hash($password, PASSWORD_DEFAULT);
 
         // store the new user in the database.
         $query = "INSERT INTO users(email, password)
@@ -62,7 +61,7 @@ VALUES ('$email','$password')";
 <body>
     <nav>
 
-    <div class="nav-text">
+        <div class="nav-text">
             <a class=navlink href="./info.php">Info</a>
         </div>
 
@@ -71,9 +70,9 @@ VALUES ('$email','$password')";
         </div>
 
         <div class="nav-logo">
-        <a class=navlink href="./info.php">
-            <img src="img/LogoB.png" alt="logo" class="picture">
-        </a>
+            <a class=navlink href="./info.php">
+                <img src="img/LogoB.png" alt="logo" class="picture">
+            </a>
         </div>
 
         <div class="nav-text">
@@ -106,8 +105,11 @@ VALUES ('$email','$password')";
                     <input type="text" id="password" name="password" required>
 
                 </div>
+                
+                <div class="button">
+                    <input type="submit" name="submit" value="Submit">
+                </div>
 
-                <input type="submit" name="submit" value="Submit">
 
 
             </form>

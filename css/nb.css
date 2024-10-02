@@ -66,6 +66,7 @@ body {
     justify-content: center;
     align-items: center;
     padding-bottom: 100px;
+    flex-direction: column;
 }
 
 .formfield {
@@ -74,6 +75,7 @@ body {
     align-items: center;
     padding-left: 100px;
     padding-right: 100px;
+    flex-direction: row;
 }
 
 .label {
@@ -81,7 +83,9 @@ body {
     justify-content: left;
     align-items: left;
     padding: 10px;
+    width: 150px;
 }
+
 
 input[type=text],
 select {
@@ -116,6 +120,8 @@ input[type=submit] {
     cursor: pointer;
     font-weight: bold;
     font-size: 1.25rem;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 input[type=submit]:hover {
