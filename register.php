@@ -105,8 +105,11 @@ VALUES ('$email','$password')";
                     <input type="text" id="password" name="password" required>
 
                 </div>
+                
+                <div class="button">
+                    <input type="submit" name="submit" value="Submit">
+                </div>
 
-                <input type="submit" name="submit" value="Submit">
 
 
             </form>
