@@ -1,5 +1,5 @@
 <?php
-  $quotes = [
+$quotes = [
     "Samen kunnen we het tij keren.",
     "Kleine acties maken een groot verschil.",
     "De toekomst van Tuvalu begint vandaag.",
@@ -11,7 +11,7 @@
 ];
 
 
-    $willekeurigeQuote = $quotes[array_rand($quotes)];
+$willekeurigeQuote = $quotes[array_rand($quotes)];
 ?>
 
 
@@ -30,23 +30,23 @@
 <body>
 
     <nav>
-        
-    <div class="nav-text">
+
+        <div class="nav-text">
             <a class=navlink href="./register.php">Register</a>
         </div>
 
         <div class="nav-text">
             <a class=navlink href="./login.php">Login</a>
         </div>
-        
+
         <div class="nav-logo">
-        <a class=navlink href="./info.php">
-            <img src="img/LogoB.png" alt="logo" class="picture">
-        </a>
+            <a class=navlink href="./info.php">
+                <img src="img/LogoB.png" alt="logo" class="picture">
+            </a>
         </div>
 
         <div class="nav-text">
-            <a class=navlink href="./game.html">Game</a>
+            <a class=navlink href="./docs/index.html">Game</a>
         </div>
 
         <div class="nav-text">
@@ -98,24 +98,23 @@
         });
 
 
-           // Quotes array from PHP
-    const quotes = <?php echo json_encode($quotes); ?>;
-    
-    let currentQuote = 0;
-    const quoteBox = document.getElementById('quotes');
+        // Quotes array from PHP
+        const quotes = <?php echo json_encode($quotes); ?>;
 
-    // Function to update quote
-    function updateQuote() {
-        quoteBox.innerText = quotes[currentQuote];
-        currentQuote = (currentQuote + 1) % quotes.length; // Loop through quotes
-    }
+        let currentQuote = 0;
+        const quoteBox = document.getElementById('quotes');
 
-    // Initial quote
-    updateQuote();
+        // Function to update quote
+        function updateQuote() {
+            quoteBox.innerText = quotes[currentQuote];
+            currentQuote = (currentQuote + 1) % quotes.length; // Loop through quotes
+        }
 
-    // Change quote every 5 seconds (5000 milliseconds)
-    setInterval(updateQuote, 5000);
+        // Initial quote
+        updateQuote();
 
+        // Change quote every 5 seconds (5000 milliseconds)
+        setInterval(updateQuote, 5000);
     </script>
 
 
@@ -136,13 +135,13 @@
                         hulp kunnen we deze filterbuizen bouwen en een levenslijn bieden aan de gemeenschap die
                         dagelijks wordt geconfronteerd met de dreiging van overstromingen en waterschaarste.</p>
                 </div>
-               
-                    <a href="./doneren.php" class="main-link">Doneer nu om Tuvalu te redden</a>
-                    <a href="./nieuwsbrief.php" class="main-link">Meld je aan voor onze nieuwsbrief</a>
-               
+
+                <a href="./doneren.php" class="main-link">Doneer nu om Tuvalu te redden</a>
+                <a href="./nieuwsbrief.php" class="main-link">Meld je aan voor onze nieuwsbrief</a>
+
             </div>
         </section>
-        
+
     </main>
 
     <footer>

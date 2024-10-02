@@ -6,9 +6,9 @@ import { gameover } from './Gameover.js'
 import { intro } from './Intro.js'
 
 export class Button extends Actor {
-    constructor(x,y) {
+    constructor(x, y) {
         super({ width: Resources.Test.width, height: Resources.Test.height })
-        this.pos = new Vector(x,y)
+        this.pos = new Vector(x, y)
     }
     onInitialize(engine) {
         this.game = engine
@@ -16,8 +16,8 @@ export class Button extends Actor {
         this.graphics.use(sprite)
 
         this.on('pointerup', () => {
-            window.location.href = 'http://localhost/TLE-1-WK2/doneren.php';
-          });
+            window.location.href = 'https://stud.hosted.hr.nl/1078387/Zuiverbuis/TLE-1-WK2/doneren.php';
+        });
     }
 
 }
