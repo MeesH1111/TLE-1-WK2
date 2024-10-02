@@ -22,8 +22,13 @@ nav {
     justify-content: space-around;
 }
 
-nav a {
+.navlink:hover {
     color: #5F7336;
+    transition: all 0.5s;
+}
+
+nav a {
+    color: #146EA6;
     font-weight: bold;
     font-size: 1.25rem;
     display: flex;
