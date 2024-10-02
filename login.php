@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($password == "") {
         $errors['password'] = "Enter your password";
     }
-    
+
 
     if (empty($errors)) {
 
@@ -26,15 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($connection, $query);
 
         if (mysqli_num_rows($result) == 1) {
-            
+
             $user = mysqli_fetch_assoc($result);
 
             if ($password == $user['password']) {
                 header('Location: info.php');
-            }  else {
+            } else {
                 //error incorrect log in
                 $errors['loginFailed'] = "You failed to login";
-                    print_r($errors);
+                print_r($errors);
             }
         }
         mysqli_close($connection);
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <nav>
- <div class="nav-text">
+        <div class="nav-text">
             <a class=navlink href="./register.php">Register</a>
         </div>
 
@@ -63,13 +63,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <div class="nav-logo">
-        <a class=navlink href="./info.php">
-            <img src="img/LogoB.png" alt="logo" class="picture">
-        </a>
+            <a class=navlink href="./info.php">
+                <img src="img/LogoB.png" alt="logo" class="picture">
+            </a>
         </div>
 
         <div class="nav-text">
-            <a class=navlink href="./game.html">Game</a>
+            <a class=navlink href="./docs/index.html">Game</a>
         </div>
 
         <div class="nav-text">
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="password">Password</label>
                     </div>
                     <input type="text" id="password" name="password" required>
-                </div>              
+                </div>
                 <input type="submit" value="Submit">
 
             </form>
