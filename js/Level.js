@@ -5,8 +5,9 @@ import { home } from "./home.js";
 
 export class level extends Scene {
     homes = [];
-    homesx = [400, 300, 500, 700, 900];
-    homesy = [400, 200, 300, 400, 500];
+    homesx = [1100, 800, 1300, 1500, 600];
+    homesy = [600, 500, 650, 500, 400];
+    homesR = [0, 5, 50, 20, 20];
     wavestate;
     kills;
     currentwaves;
@@ -27,7 +28,7 @@ export class level extends Scene {
         this.previuskills = 0;
         this.currentwaves = 5;
         this.speed = 50;
-        this.hp = 5;
+        this.hp = 3;
         this.wavestate = 5;
         console.log(this.hp);
 
@@ -65,7 +66,7 @@ export class level extends Scene {
 
         for (let i = 0; i < this.homesx.length; i++) {
             console.log(this.homesx[i]);
-            const newHome = new home(this.homesx[i], this.homesy[i]);
+            const newHome = new home(this.homesx[i], this.homesy[i], i, this.homesR[i]);
             console.log(`we made a house at : ${newHome.pos}`);
             this.add(newHome);
             const newWave = new Waves(this.homesx[i], this.homesy[i], this.speed, Math.floor(Math.random() * (1900 - 100 + 1)) + 100, this.wavepos);

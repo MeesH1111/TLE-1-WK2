@@ -65,8 +65,9 @@ export class Waves extends Actor {
                 this.scene.hp -= 1
                 this.scene.Wavespeed()
                 if (this.scene.hp === 0) {
-
-                    engine.goToScene('Gameover')
+                    setTimeout(() => {
+                        engine.goToScene('Gameover')
+                    }, 1000)
                 }
             }
         }

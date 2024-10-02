@@ -35,10 +35,10 @@ export class intro extends Scene {
         this.add(this.Label)
 
         this.Label = new Label({
-            text: 'Red het eiland door de golven weg te houden',
-            pos: new Vector(480, 450),
+            text: 'klik op de golven om ze te breken en bescherm de huizen!',
+            pos: new Vector(380, 450),
             font: new Font({
-                family: 'Arial',
+                family: 'Impact',
                 size: 50,
                 unit: FontUnit.Px
             })
@@ -46,10 +46,10 @@ export class intro extends Scene {
         this.add(this.Label)
 
         this.Label = new Label({
-            text: 'klik op de golven om ze weg te houden en behaal zo een hoog mogelijke score!',
-            pos: new Vector(75, 510),
+            text: 'Als er drie huizen breken verlies je, red Tuvalu!',
+            pos: new Vector(490, 510),
             font: new Font({
-                family: 'Arial',
+                family: 'Impact',
                 size: 50,
                 unit: FontUnit.Px
             })
@@ -58,10 +58,10 @@ export class intro extends Scene {
 
         this.label = new Label({
             text: 'Klik [Spatie] om te beginnen',
-            pos: new Vector(650, 920),
+            pos: new Vector(680, 920),
             font: new Font({
                 family: 'Impact',
-                size: 55,
+                size: 50,
                 unit: FontUnit.Px
             })
         })
