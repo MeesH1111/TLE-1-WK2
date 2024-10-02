@@ -1,45 +1,52 @@
+
 <?php
+ 
+if (isset($_POST['submit'])) {
 
-$login = false;
-// kijken of user al is ingelogd
+ /** @var mysqli $db */
+ require "../TLE-1-WK2/dblogin.php";
 
-// data ophalen
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require "../TLE-1-WK2/dblogin.php";
-
+    // Get form data
     $email = mysqli_real_escape_string($connection, $_POST['email']);
     $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-    // checken of er iets is ingevuld
+    // Server-side validation
     $errors = [];
+if (!$connection) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
     if ($email == "") {
         $errors['email'] = "Enter your email";
     }
     if ($password == "") {
         $errors['password'] = "Enter your password";
     }
-    
 
+    // If data valid
     if (empty($errors)) {
 
-        $query = "SELECT * FROM users WHERE `email` = '$email' ";
+        // create a secure password, with the PHP function password_hash()
+       // $password = password_hash($password, PASSWORD_DEFAULT);
+
+        // store the new user in the database.
+        $query = "INSERT INTO users(email, password)
+VALUES ('$email','$password')";
+
         $result = mysqli_query($connection, $query);
+        // If query succeeded
+        if ($result) {
 
-        if (mysqli_num_rows($result) == 1) {
-            
-            $user = mysqli_fetch_assoc($result);
-
-            if ($password == $user['password']) {
-                header('Location: info.php');
-            }  else {
-                //error incorrect log in
-                $errors['loginFailed'] = "You failed to login";
-                    print_r($errors);
-            }
+            // Redirect to login page
+            header('location: login.php');
+            exit;
+        } else {
+            $errors['db'] = mysqli_error($connection);
         }
+        // Exit the code
         mysqli_close($connection);
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -54,12 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <nav>
- <div class="nav-text">
-            <a class=navlink href="./register.php">Register</a>
+
+    <div class="nav-text">
+            <a class=navlink href="./info.php">Info</a>
         </div>
 
         <div class="nav-text">
-            <a class=navlink href="./info.php">Info</a>
+            <a class=navlink href="./login.php">Login</a>
         </div>
 
         <div class="nav-logo">
@@ -75,13 +83,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="nav-text">
             <a class=navlink href="./doneren.php">Doneren</a>
         </div>
+
     </nav>
+
     <header>
-        <H1>Login</H1>
+        <H1>Register</H1>
     </header>
+
     <main>
         <div class="form">
-            <form action="" method="POST">
+            <form action="register.php" method="POST">
                 <div class="formfield">
                     <div class="label">
                         <label for="email">Email</label>
@@ -93,13 +104,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="password">Password</label>
                     </div>
                     <input type="text" id="password" name="password" required>
-                </div>              
-                <input type="submit" value="Submit">
+
+                </div>
+
+                <input type="submit" name="submit" value="Submit">
+
 
             </form>
         </div>
     </main>
-
 
     <footer>
         <div class="footer">
